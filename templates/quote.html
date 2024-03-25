@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h2>Choose a stock symbol for details:</h2>
+    </div>
+
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input autofocus class="form-control mx-auto w-25" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+{% endblock %}

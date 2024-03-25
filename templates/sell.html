@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <h2>Choose how many stocks you want to sell:</h2>
+    </div>
+
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select autofocus class="form-control mx-auto w-25 " aria-label="Default select example" name="symbol">
+                <option selected="selected">Symbol</option>
+                {% for row in rows %}
+                    {% if row['shares'] > 0 %}
+                        <option value="{{ row['symbol'] }}">{{row['symbol']}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autofocus class="form-control mx-auto w-25" name="shares" placeholder="Shares" type="number" min="1">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
